@@ -12,12 +12,37 @@ export const getStaticProps = () => {
   };
 };
 
+const imgAlt = 'Sebastian Wesołowski';
+const imgSrc = '/assets/image/hero.jpg';
+const space = 14;
+
 export default function Home({ articles }) {
   return (
     <Layout>
       <Head>
         <title>Blog - recent posts</title>
       </Head>
+      <div
+        style={{
+          height: { xs: `calc(50vh - ${space * 2}px)`, lg: `calc(100vh - ${space * 2}px)` },
+
+          objectFit: 'cover',
+          willChange: 'transform,opacity',
+          maxWidth: '100%',
+          width: '100%',
+          verticalAlign: 'bottom'
+        }}>
+        <Image
+          src={imgSrc}
+          alt={imgAlt}
+          objectFit="cover"
+          loading="lazy"
+          objectPosition={'100% center'}
+          quality={100}
+          width={1024}
+          height={1024}
+        />
+      </div>
       <section className="flex flex-row flex-wrap mx-auto">
         {articles.map((article, idx) => (
           <div
